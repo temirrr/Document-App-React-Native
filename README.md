@@ -2,8 +2,10 @@
 Cross-platform app, which uses OpenCV's OCR for acquiring data from official documents
 
 Please, read the following:
+
 1.Based on your PC's operating system, change sdk.dir value in "local.properties" file.
-	OSX		sdk.dir = /Users/dev/Library/Android/sdk
+
+	OSX	sdk.dir = /Users/dev/Library/Android/sdk
 	Linux	sdk.dir = /home/USERNAME/Android/Sdk
 	Windows sdk.dir = C\:\\Users\\User\\AppData\\Local\\Android\\Sdk
 
