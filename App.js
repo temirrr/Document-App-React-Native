@@ -9,6 +9,29 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+import BootstrapStyleSheet from 'react-native-bootstrap-styles';
+
+let
+  REM = BootstrapStyleSheet.DIMENSIONS_WIDTH < 360 ? 14 : 16,
+  BODY_COLOR = '#000022',
+  TEXT_MUTED = '#888888';
+
+// custom constants
+let constants = {
+  REM,
+  BODY_COLOR, TEXT_MUTED,
+};
+
+// custom classes
+let classes = {
+  title: {
+    color: 'red',
+  }
+};
+
+let bootstrapStyleSheet = new BootstrapStyleSheet(constants, classes);
+let s = styles = bootstrapStyleSheet.create();
+let c = constants = bootstrapStyleSheet.constants;
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -22,30 +45,16 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>Takes 1-2 mins to launch =(</Text>
-        <Text style={styles.welcome}>Hopefully, it will work properly during next steps!</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <View style={[s.container, s.justifyContentCenter]}>
+          <Text style={[s.text, s.h3, s.textPrimary, s.myXs1, s.myMd3]}>Hello world!</Text>
+          <Text style={[s.text, s.py3, {fontSize: 5 * c.REM}]}>🚀🚀🚀🚀🚀🚀</Text>
+        </View>
+
+        <View style={[s.container, s.justifyContentCenter]}>
+          <Text style={s.text}>Welcome to React Native!</Text>
+          <Text style={s.text}>Takes 1-2 mins to launch</Text>
+        </View>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
