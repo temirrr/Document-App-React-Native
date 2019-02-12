@@ -27,6 +27,7 @@ Instructions in Russian for the app launch:
 4.В конце: 
 
 cd projectName
+
 react-native run-android
 
 
