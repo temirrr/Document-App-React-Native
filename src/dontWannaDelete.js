@@ -99,4 +99,6 @@ NEED THEM AT ONE POINT OF TIME*/
           </View>
         </Modal>*/}
 
+         {/*"'isVisible' in react-native-elements, not 'visible'"*/}
+
       </View>
