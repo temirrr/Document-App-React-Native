@@ -16,19 +16,28 @@ const modalMargin = normalize(18);
 const myStyles = StyleSheet.create({
 	container: {
 		flex: 1, //this is not redundant due to bg color
+		justifyContent: 'flex-start', //I guess it's default setting, but it's just a reminder for me.
 		backgroundColor: colors.white,
 	},
 	viewContainer: {
+		//there is no 'flex:1' property, cause I don't want subcontainers to strectch across the screen
 		backgroundColor: colors.white,
 		justifyContent:'center',
 		alignItems: 'center',
 		margin: customMargin,
 	},
+	unorderedList: {
+		alignItems: 'flex-start',
+	},
 	modal: {
 		backgroundColor: colors.white,
 		borderColor: colors.charcoal,
-		margin: modalMargin,
 		borderRadius: 3,
+		//margin: modalMargin,
+	},
+	buttonDown: {
+		flex: 1,
+		justifyContent:'flex-end',
 	}
 });
 

@@ -10,7 +10,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TouchableHighlight, Modal, Alert, ScrollView} from 'react-native';
 import BootstrapStyleSheet from 'react-native-bootstrap-styles';
-import { Divider, Button } from 'react-native-elements';
+import { Divider, Button, Overlay } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 /*refer to https://github.com/facebook/react-native/issues/4968 . When I use "import smth from 'moduleName'",
@@ -75,8 +75,23 @@ export default class App extends Component<Props> {
 
           <View style={[myStyles.viewContainer]}>
             <Text style={[textStyles.smallText]}>
-              Here should be the title "Instructions" and corresponding instructions.
+              I will have to insert the "Instructions" title later, probably using "Card".
             </Text>
+
+            <View style={[myStyles.unorderedList]}>
+              <Text style={[textStyles.smallText]}>
+                {'\u2022 Select the country where the document was issued.'}
+              </Text>
+              <Text style={[textStyles.smallText]}>
+                {'\u2022 Select the document type.'}
+              </Text>
+              <Text style={[textStyles.smallText]}>
+                {'\u2022 Capture the document using your smartphone\'s camera or choose from gallery.'}
+              </Text>
+              <Text style={[textStyles.smallText]}>
+                {'\u2022 Get the result.'}
+              </Text>
+            </View>
           </View>
 
           <View style={[myStyles.viewContainer]}>
@@ -96,30 +111,29 @@ export default class App extends Component<Props> {
             />
           </View>
 
-          <Modal
-            style = {[myStyles.modal]}
+          <Overlay
             animationType="slide"
             transparent={false}
-            visible={this.state.modalVisible}
-            onRequestClose={() => {
-              Alert.alert('Modal has been closed.');
-            }}>
-            <View>
-              <Text>
-              Modal is Open. In this window, you will be able to set the configurations like country,
-              document type, etc. And then the camera will be opened.
-              </Text>
-            </View>
+            isVisible={this.state.modalVisible}
+          >
+            <View style={[myStyles.container]}>
+              <View style={[myStyles.viewContainer]}>
+                <Text style={[textStyles.smallText]}>
+                Modal is Open. In this window, you will be able to set the configurations like country,
+                document type, etc. And then the camera will be opened.
+                </Text>
+              </View>
 
-            <View style={[myStyles.viewContainer]}>
-              <Button
-                title="Back"
-                onPress = {() => {
-                  this.setModalVisible(!this.state.modalVisible)
-                }}
-              />
+              <View style={[myStyles.viewContainer, myStyles.buttonDown]}>
+                <Button
+                  title="Back"
+                  onPress = {() => {
+                    this.setModalVisible(!this.state.modalVisible)
+                  }}
+                />
+              </View>
             </View>
-          </Modal>
+          </Overlay>
         </ScrollView>
       </View>
     );
