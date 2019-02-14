@@ -8,16 +8,19 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TouchableHighlight, Modal, ScrollView} from 'react-native';
+import {Platform, StyleSheet, Text, View, TouchableHighlight, Modal, Alert, ScrollView} from 'react-native';
 import BootstrapStyleSheet from 'react-native-bootstrap-styles';
-import { Divider } from 'react-native-elements';
+import { Divider, Button } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 /*refer to https://github.com/facebook/react-native/issues/4968 . When I use "import smth from 'moduleName'",
 there's an error, even though I properly use "@providesModule" in those modules
 That's why I just found temporary workaround by specifying the full path to the module's js file*/
 import CustomTop from 'C\:\\Users\\User\\helloworld\\src\\components\\CustomTop';
-import colors from 'C\:\\Users\\User\\helloworld\\src\\config\\fonts';
+import colors from 'C\:\\Users\\User\\helloworld\\src\\config\\colors';
 import textStyles from 'C\:\\Users\\User\\helloworld\\src\\config\\typography';
+import myStyles from 'C\:\\Users\\User\\helloworld\\src\\components\\myStyles';
+import normalize from 'C\:\\Users\\User\\helloworld\\src\\normalize';
 
 //StyleSheet by 'react-native-bootstrap-styles' library
 let
@@ -37,101 +40,27 @@ let bootstrapStyleSheet = new BootstrapStyleSheet(constants, classes);
 let s = bootstrapStyleSheet.create(); //styles
 let c = bootstrapStyleSheet.constants; //constants
 
-//StyleSheet obtained from Andrew's project.
-//It was transformed to JavaScript object by 'css-to-react-native' library and some manual work. 
-let myStyles = StyleSheet.create({
-  body: { 
-    backgroundColor: 'lightgrey' 
-  },
-
-  h1: { 
-    fontSize: 32,
-    fontFamily: 'Helvetica',
-    color: 'black',
-    backgroundColor: 'orange' 
-  },
-
-  h4: { 
-    paddingTop: 20,
-    paddingRight: 20,
-    paddingBottom: 20,
-    paddingLeft: 20 },
-
-  headerNav: { 
-    display: 'flex', 
-    justifyContent: 'flex-end' },
-
-  header: { 
-    borderTopColor: 'black',
-    borderRightColor: 'black',
-    borderBottomColor: 'black',
-    borderLeftColor: 'black' 
-  },
-
-  home: { 
-    //backgroundImage: 'url("/assets/AndrewCapFalc.jpg")',
-    //backgroundSize: '100% 100%',
-    minHeight: 800 
-  },
-
-  jumbotron: { 
-    display: 'flex',
-    alignItems: 'center',
-    textShadowOffset: { width: 0.25, height: 0.25 },
-    textShadowRadius: 0.25,
-    textShadowColor: '#000000' 
-  },
-
-  forMargin: { 
-    marginLeft: 100 
-  },
-
-  marginZero: {
-    marginTop: 0,
-    marginBottom: 0,
-    marginRight: 0,
-    marginLeft: 0,
-  },
-
-  colorBlack: { 
-    color: 'black' 
-  },
-
-  fa: { 
-    paddingTop: 20,
-    paddingRight: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    fontSize: 30,
-    width: 30,
-    textAlign: 'center',
-    textDecorationLine: 'none',
-    textDecorationColor: 'black',
-    textDecorationStyle: 'solid',
-    marginTop: 5,
-    marginRight: 2,
-    marginBottom: 5,
-    marginLeft: 2,
-    //borderTopLeftRadius: '50%',
-    //borderTopRightRadius: '50%',
-    //borderBottomRightRadius: '50%',
-    //borderBottomLeftRadius: '50%' 
-  },
-
-  faHover: { 
-    opacity: 0.7 
-  },
-});
-
 type Props = {};
 export default class App extends Component<Props> {
+  constructor () {
+    super()
+    this.state = {
+      modalVisible: false,
+    }
+  }
+
+  //"setModalVisible(true)" will make the modal visible.
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
   render() {
     return (
-      <View>
+      <View style={[myStyles.container]}>
         <ScrollView>
           <CustomTop content={['Document', 'Recognition', 'App']} />
 
-          <View style={[s.justifyContentCenter, s.alignItemsCenter]}>
+          <View style={[myStyles.viewContainer]}>
             <Text style={[textStyles.smallText]}>
               <Text>
               Welcome to Document Recognition app.
@@ -142,7 +71,55 @@ export default class App extends Component<Props> {
             </Text>
           </View>
 
-          <Divider style={{backgroundColor: 'orange'}} />
+          <Divider style={{backgroundColor: colors.orange}} />
+
+          <View style={[myStyles.viewContainer]}>
+            <Text style={[textStyles.smallText]}>
+              Here should be the title "Instructions" and corresponding instructions.
+            </Text>
+          </View>
+
+          <View style={[myStyles.viewContainer]}>
+            <Button
+              icon={
+                <Icon
+                  name="arrow-right"
+                  size={normalize(15)}
+                  color="white"
+                />
+              }
+              iconRight
+              title="Proceed"
+              onPress = {() => {
+                this.setModalVisible(!this.state.modalVisible)
+              }}
+            />
+          </View>
+
+          <Modal
+            style = {[myStyles.modal]}
+            animationType="slide"
+            transparent={false}
+            visible={this.state.modalVisible}
+            onRequestClose={() => {
+              Alert.alert('Modal has been closed.');
+            }}>
+            <View>
+              <Text>
+              Modal is Open. In this window, you will be able to set the configurations like country,
+              document type, etc. And then the camera will be opened.
+              </Text>
+            </View>
+
+            <View style={[myStyles.viewContainer]}>
+              <Button
+                title="Back"
+                onPress = {() => {
+                  this.setModalVisible(!this.state.modalVisible)
+                }}
+              />
+            </View>
+          </Modal>
         </ScrollView>
       </View>
     );

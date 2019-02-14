@@ -92,10 +92,8 @@ def enableSeparateBuildPerCPUArchitecture = false
  * Run Proguard to shrink the Java bytecode in release builds.
  */
 def enableProguardInReleaseBuilds = false
-
 android {
     compileSdkVersion 28
-    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.helloworld"
         minSdkVersion 26
@@ -135,11 +133,12 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-vector-icons')
     implementation project(':react-native-linear-gradient')
     implementation project(':react-native-spinkit')
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
-    implementation 'com.facebook.react:react-native:+'
+    implementation "androidx.appcompat:appcompat:${rootProject.ext.supportLibVersion}"
+    implementation 'com.facebook.react:react-native:0.58.3'
     // From node_modules
 }
 

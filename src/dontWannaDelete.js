@@ -18,6 +18,16 @@ NEED THEM AT ONE POINT OF TIME*/
     this.setState({modalVisible: visible});
   }
 
+      <View style = {[{flex:1}]}>
+        <View style = {[{height:240, backgroundColor:'orange', justifyContent:'space-around', alignItems: 'center'}]}>
+          <Text style = {[{fontSize: 40, color: 'black', fontFamily: 'Helvetica'}]}>Document</Text>
+          <Text style = {[{fontSize: 40, color: 'black', fontFamily: 'Helvetica'}]}>Recognition</Text>
+          <Text style = {[{fontSize: 40, color: 'black', fontFamily: 'Helvetica'}]}>App</Text>
+        </View>
+        <View style = {[{height:240, backgroundColor:'black'}]}>
+          
+        </View>
+      </View>
 
 
       <View style={[{flex: 1}, s.container]}>

@@ -5,11 +5,13 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+
 import textStyles from 'C\:\\Users\\User\\helloworld\\src\\config\\typography';
 import colors from 'C\:\\Users\\User\\helloworld\\src\\config\\colors';
+import normalize from 'C\:\\Users\\User\\helloworld\\src\\normalize';
 
 const customStyles = StyleSheet.create({
-	main: {
+	top: {
 		backgroundColor: colors.orange,
 		justifyContent:'space-around',
 		alignItems: 'center',
@@ -34,7 +36,7 @@ class CustomTop extends Component {
   	const {content} = this.props;
 
   	return (
-  		<View style={[customStyles.main]}>
+  		<View style={[customStyles.top]}>
   			<Text style={[customStyles.text]}>{content[0]}</Text>
   			<Text style={[customStyles.text]}>{content[1]}</Text>
   			<Text style={[customStyles.text]}>{content[2]}</Text>
