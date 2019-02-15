@@ -9,7 +9,6 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TouchableHighlight, Modal, Alert, ScrollView} from 'react-native';
-import BootstrapStyleSheet from 'react-native-bootstrap-styles';
 import { Divider, Button, Overlay } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -21,24 +20,6 @@ import colors from 'C\:\\Users\\User\\helloworld\\src\\config\\colors';
 import textStyles from 'C\:\\Users\\User\\helloworld\\src\\config\\typography';
 import myStyles from 'C\:\\Users\\User\\helloworld\\src\\components\\myStyles';
 import normalize from 'C\:\\Users\\User\\helloworld\\src\\normalize';
-
-//StyleSheet by 'react-native-bootstrap-styles' library
-let
-  REM = BootstrapStyleSheet.DIMENSIONS_WIDTH < 360 ? 14 : 16,
-  BODY_COLOR = '#000022',
-  TEXT_MUTED = '#888888';
-// custom constants
-let constants = {REM, BODY_COLOR, TEXT_MUTED,};
-// custom classes
-let classes = {
-  title: {
-    color: 'red',
-  }
-};
-
-let bootstrapStyleSheet = new BootstrapStyleSheet(constants, classes);
-let s = bootstrapStyleSheet.create(); //styles
-let c = bootstrapStyleSheet.constants; //constants
 
 type Props = {};
 export default class App extends Component<Props> {
