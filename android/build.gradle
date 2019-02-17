@@ -5,15 +5,14 @@ buildscript {
         minSdkVersion = 16
         compileSdkVersion = 28
         targetSdkVersion = 27
-        supportLibVersion = '1.0.0-beta01'
+        supportLibVersion = 28//'1.0.0-beta01'
     }
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.1'
-
+        classpath 'com.android.tools.build:gradle:3.1.0'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -35,7 +34,12 @@ allprojects {
 }
 
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.7'
+/*task wrapper(type: Wrapper) {
+    gradleVersion = '4.10.1'
+    distributionUrl = distributionUrl.replace("bin", "all")
+}*/
+
+tasks.withType(Wrapper) {
+    gradleVersion = "4.10.1"
     distributionUrl = distributionUrl.replace("bin", "all")
 }

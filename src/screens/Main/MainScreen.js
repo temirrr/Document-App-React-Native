@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TouchableHighlight, Modal, Alert, ScrollView} from 'react-native';
 import { Divider, Button, Overlay } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/FontAwesome';
+//import Icon from 'react-native-vector-icons/FontAwesome';
 
 /*refer to https://github.com/facebook/react-native/issues/4968 . When I use "import smth from 'moduleName'",
 there's an error, even though I properly use "@providesModule" in those modules
@@ -66,21 +66,24 @@ export default class App extends Component<Props> {
             </View>
           </View>
 
-          <View style={[myStyles.viewContainer]}>
-            <Button
-              icon={
-                <Icon
-                  name="arrow-right"
-                  size={normalize(15)}
-                  color="white"
-                />
-              }
-              iconRight
-              title="Proceed"
-              onPress = {() => {
-                this.setModalVisible(!this.state.modalVisible)
-              }}
-            />
+          <View style={[myStyles.viewContainer]}> 
+            <View style={[myStyles.buttons]}>
+              <Button
+                title="Proceed"
+                type="outline"
+                onPress = {() => {
+                  this.setModalVisible(!this.state.modalVisible)
+                }}
+              />
+            </View>
+
+            <View style={[myStyles.buttons]}>
+              <Button
+                title="Go to ResultsScreen"
+                type="outline"
+                onPress={() => this.props.navigation.navigate('ResultsScreen')}
+              />
+            </View>
           </View>
 
           <Overlay

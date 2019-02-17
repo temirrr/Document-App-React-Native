@@ -12,6 +12,7 @@ import normalize from 'C\:\\Users\\User\\helloworld\\src\\normalize';
 
 const customMargin = normalize(25);
 const modalMargin = normalize(18);
+const buttonMargin = normalize(3);
 
 const myStyles = StyleSheet.create({
 	container: {
@@ -34,6 +35,9 @@ const myStyles = StyleSheet.create({
 		borderColor: colors.charcoal,
 		borderRadius: 3,
 		//margin: modalMargin,
+	},
+	buttons: {
+		marginTop: buttonMargin, 
 	},
 	buttonDown: {
 		flex: 1,

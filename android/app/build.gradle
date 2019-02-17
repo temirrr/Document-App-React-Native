@@ -133,13 +133,27 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-orientation')
+    implementation project(':react-native-gesture-handler')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-linear-gradient')
     implementation project(':react-native-spinkit')
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "androidx.appcompat:appcompat:${rootProject.ext.supportLibVersion}"
-    implementation 'com.facebook.react:react-native:0.58.3'
+    /*implementation ("android.appcompat:appcompat:${rootProject.ext.supportLibVersion}") {
+        //exclude group: 'androidx.versionedparcelable'
+        //exclude module: 'appcompat-v7'
+        //exclude module: 'support-v4'
+    }*/
+    implementation ('com.facebook.react:react-native:0.58.3') {
+        //exclude group: 'androidx.versionedparcelable'
+        //exclude module: 'appcompat-v7'
+        //exclude module: 'support-v4'
+    }
+    implementation "com.android.support:support-v4:28.0.0"
+    //implementation "androidx.legacy:legacy-support-v4:1.0.0"
     // From node_modules
+    // 1.0.0-beta01
+    //versionedparcelable:1.0.0-beta01
 }
 
 // Run this once to be able to run the application with BUCK
