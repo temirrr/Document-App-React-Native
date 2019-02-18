@@ -13,7 +13,7 @@ import myStyles from 'C\:\\Users\\User\\helloworld\\src\\components\\myStyles';
 import normalize from 'C\:\\Users\\User\\helloworld\\src\\normalize';
 
 type Props = {};
-export default class App extends Component<Props> {
+export default class MainScreen extends Component<Props> {
   constructor () {
     super()
     this.state = {
