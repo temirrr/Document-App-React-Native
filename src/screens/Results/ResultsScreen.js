@@ -19,6 +19,7 @@ export default class ResultsScreen extends Component<Props> {
       <View style={[myStyles.container]}>
         <ScrollView>
           <CustomTop content={['Results', 'Screen', 'Soon']} />
+          <Text>Test Text</Text>
         </ScrollView>
       </View>
     );

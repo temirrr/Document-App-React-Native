@@ -4,7 +4,15 @@ import { Platform } from "react-native";
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import {createAppContainer, createBottomTabNavigator, createDrawerNavigator, createStackNavigator, createSwitchNavigator} from "react-navigation";
 
-const MainStack = createStackNavigator({MainScreen, ResultsScreen});
+const MainStack = createStackNavigator(
+	{MainScreen, ResultsScreen},
+	{
+	  headerMode: 'none',
+	  navigationOptions: {
+	    headerVisible: false,
+	  }
+	 },
+);
 
 const AppContainer = createAppContainer(MainStack);
 
