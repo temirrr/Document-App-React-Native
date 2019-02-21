@@ -16,14 +16,7 @@ type Props = {};
 export default class MainScreen extends Component<Props> {
   constructor () {
     super()
-    this.state = {
-      modalVisible: false,
-    }
-  }
-
-  //"setModalVisible(true)" will make the modal visible.
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
+    //some other properties
   }
 
   render() {
@@ -66,49 +59,17 @@ export default class MainScreen extends Component<Props> {
             </View>
           </View>
 
-          <View style={[myStyles.viewContainer]}> 
+          <View style={[myStyles.viewContainer, myStyles.buttonDown]}>
             <View style={[myStyles.buttons]}>
               <Button
                 title="Proceed"
                 type="outline"
-                onPress = {() => {
-                  this.setModalVisible(!this.state.modalVisible)
+                onPress={() => {
+                  this.props.navigation.navigate('ConfigurationScreen');
                 }}
               />
             </View>
-
-            <View style={[myStyles.buttons]}>
-              <Button
-                title="Go to ResultsScreen"
-                type="outline"
-                onPress={() => this.props.navigation.navigate('ResultsScreen')}
-              />
-            </View>
           </View>
-
-          <Overlay
-            animationType="slide"
-            transparent={false}
-            isVisible={this.state.modalVisible}
-          >
-            <View style={[myStyles.container]}>
-              <View style={[myStyles.viewContainer]}>
-                <Text style={[textStyles.smallText]}>
-                Modal is Open. In this window, you will be able to set the configurations like country,
-                document type, etc. And then the camera will be opened.
-                </Text>
-              </View>
-
-              <View style={[myStyles.viewContainer, myStyles.buttonDown]}>
-                <Button
-                  title="Back"
-                  onPress = {() => {
-                    this.setModalVisible(!this.state.modalVisible)
-                  }}
-                />
-              </View>
-            </View>
-          </Overlay>
         </ScrollView>
       </View>
     );

@@ -11,15 +11,26 @@ import colors from 'C\:\\Users\\User\\helloworld\\src\\config\\colors';
 import textStyles from 'C\:\\Users\\User\\helloworld\\src\\config\\typography';
 import myStyles from 'C\:\\Users\\User\\helloworld\\src\\components\\myStyles';
 import normalize from 'C\:\\Users\\User\\helloworld\\src\\normalize';
+import {countries, documents} from 'C\:\\Users\\User\\helloworld\\src\\screens\\Configuration\\configConstants';
 
 type Props = {};
 export default class ResultsScreen extends Component<Props> {
   render() {
+    const {getParam} = this.props.navigation; //the way of getting params when using react-navigation library
+    const documentType = getParam('documentType');
+    const documentCountry = getParam('documentCountry');
+
     return (
       <View style={[myStyles.container]}>
         <ScrollView>
           <CustomTop content={['Results', 'Screen', 'Soon']} />
-          <Text>Test Text</Text>
+
+          <Text style={[textStyles.smallText]}>{`You have taken picture of ${documentType}, which was issued in ${documentCountry}.`}</Text>
+
+          <View style={[myStyles.viewContainer]}>
+            <Text style={[textStyles.largeText]}>Here are your results:</Text>
+            <Text style={[textStyles.smallText]}>Results Table will be displayed here.</Text>
+          </View>
         </ScrollView>
       </View>
     );

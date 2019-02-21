@@ -99,6 +99,48 @@ NEED THEM AT ONE POINT OF TIME*/
           </View>
         </Modal>*/}
 
+                    /*onPress={() => {
+                      //the buttons will have to be reorganized when I add the gallery/camera transition.
+                      this.setModalVisible(!this.state.modalVisible);
+                      this.props.navigation.navigate('ResultsScreen', {
+                        documentCountry: someVariable1,
+                        documentType: someVariable2,
+                        /*actually, the parameters' object has to be JSON-serializable (recommended)
+                        to be able to use deep-linking or smth else, but let's implement it later if needed*/
+                      });
+                    }}*/
+
          {/*"'isVisible' in react-native-elements, not 'visible'"*/}
 
+          <View style={[myStyles.viewContainer]}> 
+            <View style={[myStyles.buttons]}>
+              <Button
+                title="Proceed"
+                type="outline"
+                onPress = {() => {
+                  this.setModalVisible(!this.state.modalVisible)
+                }}
+              />
+            </View>
+          </View>
+
+          {/*"Modal" is called "Overlay" in react-native-elements*/}
+          <Overlay
+            animationType="slide"
+            transparent={false}
+            isVisible={this.state.modalVisible}
+          >
+            <View style={[myStyles.container]}>
+              <View style={[myStyles.viewContainer]}>
+                <Text style={[textStyles.largeText]}>
+                  Configuration
+                </Text>
+              </View>
+
+
+            </View>
+          </Overlay>
+
       </View>
+
+      {/*ref prop is for referring to input field, usually when switching between them*/}

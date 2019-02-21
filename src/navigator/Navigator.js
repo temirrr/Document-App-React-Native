@@ -1,11 +1,12 @@
 import MainScreen from '../screens/Main';
 import ResultsScreen from '../screens/Results';
+import ConfigurationScreen from '../screens/Configuration';
 import { Platform } from "react-native";
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import {createAppContainer, createBottomTabNavigator, createDrawerNavigator, createStackNavigator, createSwitchNavigator} from "react-navigation";
 
 const MainStack = createStackNavigator(
-	{MainScreen, ResultsScreen},
+	{MainScreen, ConfigurationScreen, ResultsScreen},
 	{
 	  headerMode: 'none',
 	  navigationOptions: {
